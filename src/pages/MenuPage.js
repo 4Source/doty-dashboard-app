@@ -1,14 +1,22 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router";
+import { GuildMenuItem } from "../components/GuildMenuItem";
 import { GuildContext } from "../utils/contexts/GuildContext";
+import { Container } from "../utils/styles";
 import { mockGuilds } from "../__mocks__/guilds";
 
 export const MenuPage = () => {
     const navigate = useNavigate();
     const { setGuildId } = useContext(GuildContext);
+
+    const handleClick = guildId => {
+        setGuildId(guildId);
+        navigate('/categories');
+    };
+
     return (
     <div>
-        <div>MenuPage</div>
+        {/*<div>MenuPage</div>
         <ul>
             {mockGuilds.map((guild) => (
                 <li onClick={() => {
@@ -18,7 +26,18 @@ export const MenuPage = () => {
                     {guild.name}
                 </li>
             ))}
-        </ul>
+        </ul>*/}
+
+        <Container>
+            <h2>Select a Server</h2>
+            <div>
+                {mockGuilds.map((guild) => (
+                    <div onClick={() => handleClick(guild.id) }>
+                        <GuildMenuItem guild={guild}  key={guild.id} />
+                    </div>
+                ))}
+            </div>
+        </Container>
     </div>
     );
 };

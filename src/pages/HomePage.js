@@ -1,17 +1,17 @@
 import { FaDiscord, FaQuestionCircle } from 'react-icons/fa';
-import { HomeButton, HomePageStyle } from '../utils/styles';
+import { HomeButtonStyle, HomePageStyle } from '../utils/styles';
 
 export const HomePage = () => <HomePageStyle>
     <div></div>
     <div>
-        <HomeButton>
+        <HomeButtonStyle>
             <FaDiscord size={45} color="5865F2"/>
             <p style={{ fontSize: '18px', padding: '0 0 0 10px' }}>Login with Discord</p>
-        </HomeButton>
-        <HomeButton>
+        </HomeButtonStyle>
+        <HomeButtonStyle>
         <FaQuestionCircle size={45} />
             <p style={{ fontSize: '18px', padding: '0 0 0 10px' }}>Support Server</p>
-        </HomeButton>
+        </HomeButtonStyle>
     </div>
     <div style={{
             display: 'flex',
