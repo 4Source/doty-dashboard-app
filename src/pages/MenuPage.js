@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router";
 import { GuildMenuItem } from "../components/GuildMenuItem";
 import { GuildContext } from "../utils/contexts/GuildContext";
-import { Container } from "../utils/styles";
+import { ContainerStyle } from "../utils/styles";
 import { mockGuilds } from "../__mocks__/guilds";
 
 export const MenuPage = () => {
@@ -11,7 +11,7 @@ export const MenuPage = () => {
 
     const handleClick = guildId => {
         setGuildId(guildId);
-        navigate('/categories');
+        navigate('/dashboard/categories');
     };
 
     return (
@@ -28,7 +28,7 @@ export const MenuPage = () => {
             ))}
         </ul>*/}
 
-        <Container>
+        <ContainerStyle>
             <h2>Select a Server</h2>
             <div>
                 {mockGuilds.map((guild) => (
@@ -37,7 +37,7 @@ export const MenuPage = () => {
                     </div>
                 ))}
             </div>
-        </Container>
+        </ContainerStyle>
     </div>
     );
 };
