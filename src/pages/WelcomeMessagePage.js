@@ -1,1 +1,9 @@
-export const WelcomeMessagePage = () => <div>WelcomeMessagePage</div>;
+import { Page } from "../utils/styles";
+
+export const WelcomeMessagePage = () => {
+    return (
+        <Page>
+            WelcomeMessagePage
+        </Page>
+    );
+}

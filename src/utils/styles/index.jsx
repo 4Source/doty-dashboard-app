@@ -133,3 +133,7 @@ export const Button = styled.button`
     font-family: inherit;
     
 `;
+
+export const Page = styled.div`
+    padding: 35px;
+`;
