@@ -10,7 +10,7 @@ export const GuildPrefixPage = () => {
                         <div>
                             <label htmlFor="prefix">Current Prefix</label>
                         </div>
-                        <InputField style={{ margin: '10px 0px' }}/>
+                        <InputField style={{ margin: '10px 0px' }} id="prefix"/>
                         <Flex justifyContent="flex-end">
                             <Button type="button" style={{marginRight: '8px'}}>Reset</Button>
                             <Button primary>Save</Button>
