@@ -16,18 +16,6 @@ export const MenuPage = () => {
 
     return (
     <div>
-        {/*<div>MenuPage</div>
-        <ul>
-            {mockGuilds.map((guild) => (
-                <li onClick={() => {
-                    setGuildId(guild.id);
-                    navigate('/categories');
-                }}>
-                    {guild.name}
-                </li>
-            ))}
-        </ul>*/}
-
         <ContainerStyle>
             <h2>Select a Server</h2>
             <div>

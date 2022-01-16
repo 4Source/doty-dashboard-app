@@ -102,3 +102,34 @@ export const Grid = styled.div(() => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
 }));
+
+export const InputField = styled.input`
+    padding: 10px 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: inherit;
+    font-family: inherit;
+    background-color: #2121218d;
+    border-radius: 5px;
+    border: 1px solid #58585858;
+    outline: none;
+    width: 100%;
+    box-shadow: 0px 1px 5px 0px #00000030;
+
+    &:focus {
+       outline: 1px solid #585858F0;
+       box-shadow: 0px 1px 5px 0px #000000F0;
+    }
+`;
+
+export const Button = styled.button`
+    background: ${props => props.primary ? "#006ed3" : "#3d3d3d"};
+    padding: 10px 24px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    color: inherit;
+    font-family: inherit;
+    
+`;
