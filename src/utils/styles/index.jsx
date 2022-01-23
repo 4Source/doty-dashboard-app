@@ -177,3 +177,15 @@ export const Select = styled.select`
         background-color: inherit;
     }
 `;
+
+export const Overlay = styled.div`
+    height: 100%;
+    width: 100%;
+    background-color: #292929b0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+`;

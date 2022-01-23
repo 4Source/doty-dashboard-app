@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AppBar } from "./components/AppBar";
+import { Spinner } from "./components/Spinner";
 import { CategoryPage } from "./pages/CategoryPage";
 import { GuildPrefixPage } from "./pages/GuildPrefixPage";
 import { LoginPage } from "./pages/LoginPage";
@@ -12,9 +13,12 @@ import { useFetchUser } from "./utils/hooks/useFetchUser";
 function App() {
   const [ guildId, setGuildId ] = useState('')
   const [ user, error, loading ] = useFetchUser();
+
+  if(loading) return <Spinner />;
+
   return (
     <GuildContext.Provider value={{guildId, setGuildId }}>
-      { user ? (
+      { user && !error ? (
         <>
           <Routes>
             <Route path="/dashboard/*" element={<AppBar />} />
@@ -30,6 +34,7 @@ function App() {
       ) : (
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route path="*" element={<div>Not Found</div>} />
         </Routes>
       )}
     </GuildContext.Provider>
