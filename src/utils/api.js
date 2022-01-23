@@ -6,3 +6,6 @@ export const getAuthStatus = () => axios.get('http://localhost:3001/api/auth/sta
     withCredentials: true,
 });
 
+export const getMutualGuilds = () => axios.get('http://localhost:3001/api/discord/guilds', {
+    withCredentials: true,
+});

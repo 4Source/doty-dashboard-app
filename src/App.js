@@ -5,7 +5,7 @@ import { Spinner } from "./components/Spinner";
 import { CategoryPage } from "./pages/CategoryPage";
 import { GuildPrefixPage } from "./pages/GuildPrefixPage";
 import { LoginPage } from "./pages/LoginPage";
-import { MenuPage } from "./pages/MenuPage";
+import { ServersPage } from "./pages/ServersPage";
 import { WelcomeMessagePage } from "./pages/WelcomeMessagePage";
 import { GuildContext } from "./utils/contexts/GuildContext";
 import { useFetchUser } from "./utils/hooks/useFetchUser";
@@ -25,7 +25,7 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/dashboard/servers" element={<MenuPage />} />
+            <Route path="/dashboard/servers" element={<ServersPage />} />
             <Route path="/dashboard/categories" element={<CategoryPage />} />
             <Route path="/dashboard/prefix" element={<GuildPrefixPage />} />
             <Route path="/dashboard/message" element={<WelcomeMessagePage />} />
