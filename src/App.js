@@ -11,13 +11,14 @@ import { GuildContext } from "./utils/contexts/GuildContext";
 import { useFetchUser } from "./utils/hooks/useFetchUser";
 
 function App() {
-  const [ guildId, setGuildId ] = useState('')
+  const [ guild, setGuild ] = useState();
+  const updateGuild = (guild) => setGuild(guild);
   const [ user, error, loading ] = useFetchUser();
 
   if(loading) return <Spinner />;
 
   return (
-    <GuildContext.Provider value={{guildId, setGuildId }}>
+    <GuildContext.Provider value={{ guild, updateGuild }}>
       { user && !error ? (
         <>
           <Routes>
@@ -25,7 +26,7 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/dashboard/servers" element={<ServersPage />} />
+            <Route path="/servers" element={<ServersPage />} />
             <Route path="/dashboard/categories" element={<CategoryPage />} />
             <Route path="/dashboard/prefix" element={<GuildPrefixPage />} />
             <Route path="/dashboard/message" element={<WelcomeMessagePage />} />

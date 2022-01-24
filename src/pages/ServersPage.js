@@ -8,11 +8,11 @@ import { BarLoader } from 'react-spinners';
 
 export const ServersPage = () => {
     const navigate = useNavigate();
-    const { setGuildId } = useContext(GuildContext);
+    const { updateGuild } = useContext(GuildContext);
     const [ guilds, error, loading ] = useFetchMutualGuilds();
 
-    const handleClick = guildId => {
-        setGuildId(guildId);
+    const handleClick = guild => {
+        updateGuild(guild);
         navigate('/dashboard/categories');
     };
 
@@ -30,7 +30,7 @@ export const ServersPage = () => {
                         <div>
                             {guilds && 
                                 guilds.map((guild) => (
-                                    <div onClick={() => handleClick(guild.id) } key={guild.id}>
+                                    <div onClick={() => handleClick(guild) } key={guild.id}>
                                         <GuildMenuItem guild={guild} />
                                     </div>
                             ))}

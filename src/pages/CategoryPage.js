@@ -1,11 +1,8 @@
-import { useContext } from "react";
-import { GuildContext } from "../utils/contexts/GuildContext";
 import { ContainerStyle, Flex, Grid, Page, TextButton, Title } from "../utils/styles";
 import { IoSettingsOutline, IoNewspaperOutline } from 'react-icons/io5'
 import { useNavigate } from "react-router-dom";
 
 export const CategoryPage = () => {
-    const { guildId } = useContext(GuildContext);
     const navigate = useNavigate();
 
     return (
