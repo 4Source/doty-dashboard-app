@@ -11,7 +11,6 @@ export function useFetchMutualGuilds() {
         setLoading(true);
         getMutualGuilds()
         .then(({ data }) => {
-            console.log(data);
             setGuilds(data);
         })
         .catch((err) => {

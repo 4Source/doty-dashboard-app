@@ -10,7 +10,6 @@ export function useFetchUser() {
         setLoading(true);
         getAuthStatus()
         .then(({ data }) => {
-            console.log(data);
             setUser(data);
         })
         .catch((err) => {
