@@ -14,7 +14,7 @@ export const getMutualGuilds = () => axios.get(`${API_URL}/discord/guilds`, {
     withCredentials: true,
 });
 
-export const getGuildConfig = (guildId) => axios.get(`${API_URL}/guilds/config/${guildId}`, {
+export const getGuildConfig = (guildId) => axios.get(`${API_URL}/guilds/${guildId}/config`, {
     withCredentials: true,
 });
 
