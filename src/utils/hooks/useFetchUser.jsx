@@ -23,3 +23,27 @@ export function useFetchUser() {
 
     return [ user, error, loading ];
 }
+
+export function useFetchAuthStatus() {
+    const [ authState, setAuthState ] = useState(null);
+    const [ error , setError ] = useState(null);
+    const [ loading, setLoading ] = useState(false);
+
+    useEffect(() => {
+        setLoading(true);
+        getAuthStatus()
+        .then(({ data }) => {
+            if(!data) setAuthState(false);
+            setAuthState(true);
+        })
+        .catch((err) => {
+            console.log(err)
+            setError(err);
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+    }, []);
+
+    return [ authState, error, loading ];
+}
