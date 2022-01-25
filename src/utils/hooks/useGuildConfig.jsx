@@ -4,6 +4,7 @@ import { getGuildConfig } from "../api";
 
 export function useGuildConfig(guildId) {
     const [ config, setConfig ] = useState(null);
+    const [ prefix, setPrefix ] = useState(null);
     const [ error , setError ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
@@ -11,8 +12,8 @@ export function useGuildConfig(guildId) {
         setLoading(true);
         getGuildConfig(guildId)
         .then(({ data }) => {
-            console.log(data);
             setConfig(data);
+            setPrefix(data.prefix);
         })
         .catch((err) => {
             console.log(err)
@@ -22,6 +23,6 @@ export function useGuildConfig(guildId) {
             setLoading(false);
         });
     }, []);
-
-    return [ config, error, loading ];
+    
+    return [ config, prefix, setPrefix, error, loading ];
 }

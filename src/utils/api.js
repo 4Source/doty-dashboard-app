@@ -10,4 +10,13 @@ export const getMutualGuilds = () => axios.get(`${API_URL}/discord/guilds`, {
     withCredentials: true,
 });
 
-export const getGuildConfig = (guildId) => axios.get(`${API_URL}/guilds/config/${guildId}`);
+export const getGuildConfig = (guildId) => axios.get(`${API_URL}/guilds/config/${guildId}`, {
+    withCredentials: true,
+});
+
+export const updateGuildPrefix = (guildId, prefix) => axios.post(`${API_URL}/guilds/${guildId}/config/prefix`, {
+    prefix: `${prefix}`,
+},
+{
+    withCredentials: true,
+});
