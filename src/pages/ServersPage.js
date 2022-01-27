@@ -21,25 +21,22 @@ export const ServersPage = () => {
             <ContainerStyle>
                 <h2>Select a Server</h2>
                 <div>
-                    
-                    {loading ? (
-                        <Flex justifyContent="center">
-                            <BarLoader color="white" />
-                        </Flex>
-                    ) : (
-                        <div>
-                            {guilds && 
-                                guilds.map((guild) => (
-                                    <div onClick={() => handleClick(guild) } key={guild.id}>
-                                        <GuildMenuItem guild={guild} />
-                                    </div>
-                            ))}
-                        </div>
-                    )}
-
-
-
-                    
+                    {
+                        loading ? (
+                            <Flex justifyContent="center">
+                                <BarLoader color="white" />
+                            </Flex>
+                        ) : (
+                            <div>
+                                {guilds && 
+                                    guilds.map((guild) => (
+                                        <div onClick={() => handleClick(guild) } key={guild.id}>
+                                            <GuildMenuItem guild={guild} />
+                                        </div>
+                                ))}
+                            </div>
+                        )
+                    }
                 </div>
             </ContainerStyle>
         </Page>
