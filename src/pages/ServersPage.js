@@ -10,7 +10,7 @@ export const ServersPage = () => {
     const navigate = useNavigate();
     const { updateGuild } = useContext(GuildContext);
     const [ guilds, error, loading ] = useFetchMutualGuilds();
-
+    
     const handleClick = guild => {
         updateGuild(guild);
         navigate('/dashboard/categories');
@@ -22,11 +22,7 @@ export const ServersPage = () => {
                 <h2>Select a Server</h2>
                 <div>
                     {
-                        loading ? (
-                            <Flex justifyContent="center">
-                                <BarLoader color="white" />
-                            </Flex>
-                        ) : (
+                        !loading && guilds && !error? (
                             <div>
                                 {guilds && 
                                     guilds.map((guild) => (
@@ -35,7 +31,14 @@ export const ServersPage = () => {
                                         </div>
                                 ))}
                             </div>
-                        )
+                        ) : (error ? (
+                                <div>Error</div>
+                            ) : (
+                                <Flex justifyContent="center">
+                                    <BarLoader color="white" />
+                                </Flex>
+                            )
+                        ) 
                     }
                 </div>
             </ContainerStyle>
