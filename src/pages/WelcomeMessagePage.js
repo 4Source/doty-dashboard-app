@@ -9,9 +9,6 @@ export const WelcomeMessagePage = () => {
     const { guild } = useContext(GuildContext);
     const [ config, channels, error, loading ] = useFetchGuildChannels(guild && guild.id, { type: [0, 4]});
     
-    console.log('config', config);
-    console.log('error', error);
-    console.log('loading', loading);
     return (
         <Page>
             <ContainerStyle>

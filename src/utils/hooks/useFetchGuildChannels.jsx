@@ -19,7 +19,6 @@ export function useFetchGuildChannels( guildId, options = {} ) {
         })
         .then(({ data }) => {
             setChannels(data);
-            console.log(data)
         })
         .catch((err) => {
             console.log(err)

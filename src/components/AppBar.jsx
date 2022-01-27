@@ -7,7 +7,6 @@ import { GuildIcon } from "./GuildIcon";
 export const AppBar = () => {
     const navigate = useNavigate();
     const { guild } = useContext(GuildContext);
-    console.log(guild);
 
     const handleClick = () => {
         navigate('/servers');

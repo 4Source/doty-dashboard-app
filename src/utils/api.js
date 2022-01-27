@@ -26,7 +26,6 @@ export const updateGuildPrefix = (guildId, prefix) => axios.post(`${API_URL}/gui
 });
 
 export const getGuildChannels = async ( guildId, options = {} ) => {
-    console.log('get Guild', options)
     return await axios.post(`${API_URL}/discord/guilds/${guildId}/channels`, {
             type: options.type,
     },
