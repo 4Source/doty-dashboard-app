@@ -6,10 +6,9 @@ export function useGuildConfig(guildId) {
     const [ config, setConfig ] = useState(null);
     const [ prefix, setPrefix ] = useState(null);
     const [ error , setError ] = useState(null);
-    const [ loading, setLoading ] = useState(false);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
         getGuildConfig(guildId)
         .then(({ data }) => {
             setConfig(data);

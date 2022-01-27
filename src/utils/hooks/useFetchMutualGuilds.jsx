@@ -5,10 +5,9 @@ import { getMutualGuilds } from "../api";
 export function useFetchMutualGuilds() {
     const [ guilds, setGuilds ] = useState(null);
     const [ error , setError ] = useState(null);
-    const [ loading, setLoading ] = useState(false);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
         getMutualGuilds()
         .then(({ data }) => {
             setGuilds(data);

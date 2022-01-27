@@ -4,10 +4,9 @@ import { getAuthStatus } from "../api"
 export function useFetchUser() {
     const [ user, setUser ] = useState(null);
     const [ error , setError ] = useState(null);
-    const [ loading, setLoading ] = useState(false);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
         getAuthStatus()
         .then(({ data }) => {
             setUser(data);
@@ -27,10 +26,9 @@ export function useFetchUser() {
 export function useFetchAuthStatus() {
     const [ authState, setAuthState ] = useState(null);
     const [ error , setError ] = useState(null);
-    const [ loading, setLoading ] = useState(false);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
         getAuthStatus()
         .then(({ data }) => {
             if(!data) setAuthState(false);

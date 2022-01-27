@@ -12,7 +12,6 @@ export function useFetchGuildChannels( guildId, options = {} ) {
     const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
         getGuildConfig(guildId)
         .then(({ data }) => {
             setConfig(data);
