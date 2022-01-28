@@ -1,27 +1,42 @@
 import { useContext } from "react";
 import { BarLoader } from "react-spinners";
-import { sortByPossition } from "../utils/compare/channels";
+import { updateWelcomeChannelId } from "../utils/api";
 import { GuildContext } from "../utils/contexts/GuildContext";
 import { useFetchGuildChannels } from "../utils/hooks/useFetchGuildChannels";
-import { Button, ContainerStyle, Flex, Page, Select, TextArea, Title } from "../utils/styles";
+import { Button, ContainerStyle, Flex, Page, TextArea, Title } from "../utils/styles";
 
 export const WelcomeMessagePage = () => {
     const { guild } = useContext(GuildContext);
-    const [ config, channels, error, loading ] = useFetchGuildChannels(guild && guild.id, { type: [0, 4]});
+    const [ config, channels, selectedChannel, setSelectedChannel, error, loading ] = useFetchGuildChannels(guild && guild.id, { type: [0, 4]});
     
+
+    const updateWelcomeChannel = async() => {
+        try {
+            await updateWelcomeChannelId(guild && guild.id, selectedChannel);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <Page>
             <ContainerStyle>
                 <Title>Update Welcome Message</Title>
                 {
-                    !loading && config && !error ? (
+                    !loading && config && channels && !error ? (
                         <>
                             <div>
                                 <section>
                                     <div>
                                         <label>Current Channel</label>
                                     </div>
-                                    <select defaultValue={config.welcome_channel_id ? `${config.welcome_channel_id}` : 'default'} style={{ margin: '10px 0px' }}>
+                                    <select 
+                                        defaultValue={config.welcome_channel_id ? `${config.welcome_channel_id}` : 'default'} 
+                                        style={{ margin: '10px 0px' }}
+                                        onChange={(e) => {
+                                            setSelectedChannel(e.target.value);
+                                        }}
+                                    >
                                         <option 
                                             value={'default'} 
                                             disabled
@@ -29,8 +44,8 @@ export const WelcomeMessagePage = () => {
                                             Please Select a Channel
                                         </option>
                                         {
-                                            channels?.map((channel) => {
-                                                if(channel.type == 4) {
+                                            channels.map((channel) => {
+                                                if(channel.type === 4) {
                                                     return <option
                                                         value={channel.id}
                                                         disabled
@@ -57,7 +72,7 @@ export const WelcomeMessagePage = () => {
                                 </section>
                                 <Flex justifyContent="flex-end">
                                     <Button type="button" style={{marginRight: '8px'}}>Reset</Button>
-                                    <Button primary>Save</Button>
+                                    <Button primary onClick={updateWelcomeChannel}>Save</Button>
                                 </Flex>
                             </div>
                         </>

@@ -8,13 +8,16 @@ import { getGuildChannels, getGuildConfig } from "../api";
 export function useFetchGuildChannels( guildId, options = {} ) {
     const [ config, setConfig ] = useState(null);
     const [ channels, setChannels ] = useState(null);
+    const [ selectedChannel, setSelectedChannel ] = useState(null);
     const [ error , setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
+    
 
     useEffect(() => {
         getGuildConfig(guildId)
         .then(({ data }) => {
             setConfig(data);
+            if(data.welcome_channel_id) setSelectedChannel(data.welcome_channel_id);
             return getGuildChannels(guildId, options);
         })
         .then(({ data }) => {
@@ -29,5 +32,5 @@ export function useFetchGuildChannels( guildId, options = {} ) {
         })
     }, []);
     
-    return [ config, channels, error, loading ];
+    return [ config, channels, selectedChannel, setSelectedChannel, error, loading ];
 }

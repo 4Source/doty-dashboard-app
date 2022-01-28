@@ -25,11 +25,16 @@ export const updateGuildPrefix = (guildId, prefix) => axios.post(`${API_URL}/gui
     withCredentials: true,
 });
 
-export const getGuildChannels = async ( guildId, options = {} ) => {
-    return await axios.post(`${API_URL}/discord/guilds/${guildId}/channels`, {
-            type: options.type,
-    },
-    {
-        withCredentials: true,
-    });
-}
+export const updateWelcomeChannelId = (guildId, channelId) => axios.post(`${API_URL}/guilds/${guildId}/config/welcome`, {
+    channelId: `${channelId}`,
+},
+{
+    withCredentials: true,
+});
+
+export const getGuildChannels = async ( guildId, options = {} ) => await axios.post(`${API_URL}/discord/guilds/${guildId}/channels`, {
+    type: options.type,
+},
+{
+    withCredentials: true,
+});
