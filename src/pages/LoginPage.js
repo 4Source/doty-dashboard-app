@@ -5,6 +5,7 @@ export const LoginPage = () => {
     const redirect = () => {
         window.location.href = 'http://localhost:3001/api/auth';
     };    
+    
     return (
         <HomePageStyle>
             <div></div>

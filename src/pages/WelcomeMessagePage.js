@@ -3,7 +3,7 @@ import { BarLoader } from "react-spinners";
 import { updateWelcomeChannelId } from "../utils/api";
 import { GuildContext } from "../utils/contexts/GuildContext";
 import { useFetchGuildChannels } from "../utils/hooks/useFetchGuildChannels";
-import { Button, ContainerStyle, Flex, Page, TextArea, Title } from "../utils/styles";
+import { Button, ContainerStyle, Flex, Page, Select, TextArea, Title } from "../utils/styles";
 
 export const WelcomeMessagePage = () => {
     const { guild } = useContext(GuildContext);
@@ -30,7 +30,7 @@ export const WelcomeMessagePage = () => {
                                     <div>
                                         <label>Current Channel</label>
                                     </div>
-                                    <select 
+                                    <Select 
                                         defaultValue={config.welcome_channel_id ? `${config.welcome_channel_id}` : 'default'} 
                                         style={{ margin: '10px 0px' }}
                                         onChange={(e) => {
@@ -39,6 +39,7 @@ export const WelcomeMessagePage = () => {
                                     >
                                         <option 
                                             value={'default'} 
+                                            key={'default'}
                                             disabled
                                         >
                                             Please Select a Channel
@@ -48,6 +49,7 @@ export const WelcomeMessagePage = () => {
                                                 if(channel.type === 4) {
                                                     return <option
                                                         value={channel.id}
+                                                        key={channel.id}
                                                         disabled
                                                     >
                                                         {channel.name}
@@ -56,13 +58,14 @@ export const WelcomeMessagePage = () => {
                                                 else {
                                                     return <option
                                                         value={channel.id}
+                                                        key={channel.id}
                                                     >
                                                         #{channel.name}
                                                     </option>
                                                 }
                                             })
                                         }
-                                    </select>
+                                    </Select>
                                 </section>
                                 <section style={{ margin: '10px 0px' }}>
                                     <div>
