@@ -1,8 +1,9 @@
 import { GuildMenuStyle } from "../utils/styles";
+import { GuildIcon } from "./GuildIcon";
 
 export const GuildMenuItem = ( props ) => {
     return ( <GuildMenuStyle>
-                <img src={props.guild.icon} alt={props.guild.name} width={45} style={{ borderRadius: '50%' }}/>
+                <GuildIcon guild={props.guild}/>
                 <p>{props.guild.name}</p>
             </GuildMenuStyle>
     )}; 

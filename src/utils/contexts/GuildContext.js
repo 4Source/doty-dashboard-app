@@ -1,6 +1,14 @@
 import { createContext } from "react";
 
 export const GuildContext = createContext({
-    guildId: '',
-    setGuildId: () => {},
+    guild: {
+        id: '',
+        name: '',
+        icon: '',
+        owner: false,
+        permissions: '',
+        features: [''],
+    },
+    setGuild: () => {},
 });
+

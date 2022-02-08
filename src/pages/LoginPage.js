@@ -1,12 +1,16 @@
 import { FaDiscord, FaQuestionCircle } from 'react-icons/fa';
 import { HomeButtonStyle, HomePageStyle } from '../utils/styles';
 
-export const HomePage = () => {
+export const LoginPage = () => {
+    const redirect = () => {
+        window.location.href = 'http://localhost:3001/api/auth';
+    };    
+    
     return (
         <HomePageStyle>
             <div></div>
             <div>
-                <HomeButtonStyle>
+                <HomeButtonStyle onClick={redirect}>
                     <FaDiscord size={45} color="5865F2"/>
                     <p style={{ fontSize: '18px', padding: '0 0 0 10px' }}>Login with Discord</p>
                 </HomeButtonStyle>

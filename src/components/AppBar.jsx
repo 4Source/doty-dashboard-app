@@ -1,13 +1,26 @@
 import { AppBarStyle, SelectedGuildStyle } from "../utils/styles";
-
-import herz from '../assets/herz.png'
+import { useContext } from "react";
+import { GuildContext } from "../utils/contexts/GuildContext";
+import { Navigate, useNavigate } from "react-router";
+import { GuildIcon } from "./GuildIcon";
 
 export const AppBar = () => {
-    return (<AppBarStyle>
-        <p>Configuring</p>
-        <SelectedGuildStyle>
-            <p style={{ padding: '0 4px'}}>Server</p>
-            <img src={herz} alt="Logo" heigth={45} width={45} style={{ borderRadius: '50%', boxShadow: '0px 1px 5px 0px #00000080'}}/>
-        </SelectedGuildStyle>
-    </AppBarStyle>
-)};
+    const navigate = useNavigate();
+    const { guild } = useContext(GuildContext);
+
+    const handleClick = () => {
+        navigate('/servers');
+    };
+
+    return guild ? (<AppBarStyle>
+            <p>Configuring</p>
+            <SelectedGuildStyle onClick={() => handleClick(guild) }>
+                <p style={{ padding: '0 4px'}}>{guild.name}</p>
+                <GuildIcon guild={guild}/>
+                
+            </SelectedGuildStyle>
+        </AppBarStyle>
+    ) : (
+        <Navigate replace to="/servers" />
+    )
+};
